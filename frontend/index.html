@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learnify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<header>
+  <div class="logo">
+    <span class="logo-icon">⬡</span>
+    <span class="logo-text">Learnify</span>
+  </div>
+  <p class="tagline">Smart Learning Assistant</p>
+</header>
+
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">History</span>
+      <button class="clear-btn" onclick="clearHistory()">Clear all</button>
+    </div>
+    <div class="history-list" id="historyList">
+      <div class="history-empty">No history yet</div>
+    </div>
+  </aside>
+
+  <div class="main">
+
+    <div class="mode-buttons" id="mode">
+      <button class="mode-btn active" onclick="setMode('code', this)">
+        <span class="mode-icon">✦</span> Code
+      </button>
+      <button class="mode-btn" onclick="setMode('notes', this)">
+        <span class="mode-icon">✦</span> Notes
+      </button>
+      <button class="mode-btn" onclick="setMode('topic', this)">
+        <span class="mode-icon">✦</span> Topic
+      </button>
+    </div>
+
+    <div class="grid">
+
+      <div class="panel input-panel">
+        <div class="panel-label">INPUT</div>
+        <textarea id="inputText" placeholder="Enter code, notes, or topic..."></textarea>
+        <button class="process-btn" onclick="processInput()">
+          <span class="btn-text">Process</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="panel output-panel">
+        <div class="panel-top">
+          <div class="panel-label">OUTPUT</div>
+          <button class="copy-btn" id="copyBtn" onclick="copyOutput()" style="display:none">
+            ⎘ Copy
+          </button>
+        </div>
+        <div id="output" class="output-content">
+          <div class="placeholder">
+            <span class="placeholder-icon">⬡</span>
+            <p>Your AI-generated explanation will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
