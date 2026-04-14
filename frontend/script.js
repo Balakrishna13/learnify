@@ -29,7 +29,7 @@ async function processInput() {
         </div>`;
 
     try {
-        const response = await fetch("https://learnify-backend.onrender.com/process", {
+        const response = await fetch("https://learnify-1c4z.onrender.com/process", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ mode: currentMode, text: text })
