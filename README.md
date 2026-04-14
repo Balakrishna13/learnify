@@ -3,16 +3,17 @@
 Learnify is an AI-powered learning assistant that explains code, summarizes notes, and breaks down topics in a clear, structured way.
 
 ## Features
-- 💻 **Code mode** — explains any code snippet step by step
-- 📝 **Notes mode** — summarizes and structures raw notes
-- 🧠 **Topic mode** — deep explains any concept with definition, intuition, and examples
-- 💾 **History** — saves past queries locally in your browser
-- 📋 **Copy output** — one click to copy any explanation
+- 💻 **Code Mode:** Explains any code snippet step-by-step with complexity analysis.
+- 📝 **Notes Mode:** Transforms fragmented, messy notes into structured, exam-ready study guides.
+- 🧠 **Topic Mode:** Breaks down complex concepts using a "Definition-Intuition-Example" framework for deep understanding.
+- 💾 **Persistent History:** Local browser integration ensures your previous queries are saved and accessible even after a restart.
+- 📋 **Copy Output:** Single-click clipboard integration for seamless sharing.
+- 📄 **Professional PDF Export:** Generates high-quality, print-optimized documents featuring a minimalist academic layout, refined typography, and a subtle branding signature.
 
 ## Tech Stack
-- **Frontend** — HTML, CSS, JavaScript
+- **Frontend** — HTML5, CSS3, JavaScript(ES6+)
 - **Backend** — Python, Flask
-- **AI** — Groq API (LLaMA 3)
+- **AI Engine** — Groq API (LLaMA 3)
 
 ## Setup & Run
 
@@ -40,3 +41,6 @@ python app.py
 In the 2nd terminal(powershell), enter :
 cd frontend (or acc.to the path)
 start index.html
+
+## 💡Why Learnify?
+Unlike standard AI chats, Learnify is built with a Print-First Design. The PDF export engine uses custom @media print logic to ensure that your study materials are formatted perfectly for physical paper—no cut-off code blocks, no cluttered UI elements, just clean knowledge.
