@@ -3,11 +3,12 @@
 Learnify is an AI-powered learning assistant that explains code, summarizes notes, and breaks down topics in a clear, structured way.
 
 ## Features
-- 💻 **Code mode** — explains any code snippet step by step
-- 📝 **Notes mode** — summarizes and structures raw notes
-- 🧠 **Topic mode** — deep explains any concept with definition, intuition, and examples
-- 💾 **History** — saves past queries locally in your browser
-- 📋 **Copy output** — one click to copy any explanation
+- 💻 **Code Mode:** Explains any code snippet step-by-step with complexity analysis.
+- 📝 **Notes Mode:** Summarizes and structures messy raw notes into study-ready guides.
+- 🧠 **Topic Mode:** Deep-explains concepts using clear definitions, intuitive analogies, and real-world examples.
+- 💾 **Persistent History:** Saves your past queries locally in your browser so you never lose your progress.
+- 📋 **Copy Output:** Instantly copy any AI-generated explanation to your clipboard.
+- 📄 **Professional PDF Export:** Generates a beautifully formatted, print-ready document with a clean academic layout, optimized typography, and a subtle branding signature.
 
 ## Tech Stack
 - **Frontend** — HTML, CSS, JavaScript
