@@ -62,6 +62,9 @@
           <button class="copy-btn" id="copyBtn" onclick="copyOutput()" style="display:none">
             ⎘ Copy
           </button>
+          <button class="export-btn" id="exportBtn" onclick="exportPDF()" style="display:none">
+            ⬇ PDF
+          </button>
         </div>
         <div id="output" class="output-content">
           <div class="placeholder">
@@ -75,6 +78,8 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 <script src="script.js"></script>
 </body>

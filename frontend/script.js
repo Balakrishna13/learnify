@@ -21,6 +21,7 @@ async function processInput() {
     btn.querySelector(".btn-text").textContent = "Processing...";
 
     document.getElementById("copyBtn").style.display = "none";
+    document.getElementById("exportBtn").style.display = "none";
     document.getElementById("output").innerHTML = `
         <div class="spinner">
             <div class="spinner-ring"></div>
@@ -58,6 +59,7 @@ async function processInput() {
         currentOutputHTML = outputHTML;
         document.getElementById("output").innerHTML = outputHTML;
         document.getElementById("copyBtn").style.display = "block";
+        document.getElementById("exportBtn").style.display = "block";
 
         saveToHistory(text, outputHTML);
 
@@ -81,6 +83,79 @@ function copyOutput() {
             btn.classList.remove("copied");
         }, 2000);
     });
+}
+
+async function exportPDF() {
+    const btn = document.getElementById("exportBtn");
+    btn.textContent = "Generating...";
+
+    const output = document.getElementById("output");
+
+    const originalMaxHeight = output.style.maxHeight;
+    const originalOverflow = output.style.overflow;
+    output.style.maxHeight = "none";
+    output.style.overflow = "visible";
+
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const canvas = await html2canvas(output, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#fef6f8",
+        scrollX: 0,
+        scrollY: 0,
+        width: output.scrollWidth,
+        height: output.scrollHeight
+    });
+
+    output.style.maxHeight = originalMaxHeight;
+    output.style.overflow = originalOverflow;
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const margin = 10;
+    const usableWidth = pageWidth - margin * 2;
+    const usableHeight = pageHeight - margin * 2;
+
+    const imgWidth = usableWidth;
+    const totalImgHeight = (canvas.height * imgWidth) / canvas.width;
+    const pageHeightInPx = (usableHeight * canvas.width) / imgWidth;
+
+    let remainingHeight = canvas.height;
+    let sourceY = 0;
+    let isFirstPage = true;
+
+    while (remainingHeight > 0) {
+        if (!isFirstPage) pdf.addPage();
+
+        const sliceHeight = Math.min(pageHeightInPx, remainingHeight);
+
+        const pageCanvas = document.createElement("canvas");
+        pageCanvas.width = canvas.width;
+        pageCanvas.height = sliceHeight;
+
+        const ctx = pageCanvas.getContext("2d");
+        ctx.fillStyle = "#fef6f8";
+        ctx.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
+        ctx.drawImage(canvas, 0, sourceY, canvas.width, sliceHeight, 0, 0, canvas.width, sliceHeight);
+
+        const pageImgData = pageCanvas.toDataURL("image/png");
+        const pageImgHeight = (sliceHeight * imgWidth) / canvas.width;
+
+        pdf.addImage(pageImgData, "PNG", margin, margin, imgWidth, pageImgHeight);
+
+        sourceY += sliceHeight;
+        remainingHeight -= sliceHeight;
+        isFirstPage = false;
+    }
+
+    const filename = `learnify-${currentMode}-${Date.now()}.pdf`;
+    pdf.save(filename);
+
+    btn.textContent = "⬇ PDF";
 }
 
 function saveToHistory(inputText, outputHTML) {
@@ -130,6 +205,7 @@ function loadHistory(id) {
     document.getElementById("inputText").value = item.input;
     document.getElementById("output").innerHTML = item.output;
     document.getElementById("copyBtn").style.display = "block";
+    document.getElementById("exportBtn").style.display = "block";
     currentOutputHTML = item.output;
     currentMode = item.mode;
 
