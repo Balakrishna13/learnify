@@ -34,13 +34,13 @@ GROQ_API_KEY = key in .env file
 
 ### 4. How To Run
 Open split terminal
-In the 1st terminal(python), enter :
-cd backend (or acc.to the path)
-python app.py
+In the 1st terminal, enter :
+cd backend
+uvicorn main:app --reload
 
 In the 2nd terminal(powershell), enter :
-cd frontend (or acc.to the path)
-start index.html
+cd frontend
+python -m http.server 5500
 
 ## 💡Why Learnify?
 Unlike standard AI chats, Learnify is built with a Print-First Design. The PDF export engine uses custom @media print logic to ensure that your study materials are formatted perfectly for physical paper—no cut-off code blocks, no cluttered UI elements, just clean knowledge.
