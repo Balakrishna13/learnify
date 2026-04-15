@@ -12,7 +12,7 @@ Learnify is an AI-powered learning assistant that explains code, summarizes note
 
 ## Tech Stack
 - **Frontend** — HTML5, CSS3, JavaScript(ES6+)
-- **Backend** — Python, Flask
+- **Backend** — Python, FastAPI
 - **AI Engine** — Groq API (LLaMA 3)
 
 ## Setup & Run
