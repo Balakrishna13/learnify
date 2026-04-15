@@ -1,6 +1,6 @@
-Flask
+fastapi
+uvicorn
 groq
 python-dotenv
 requests
-flask-cors
 gunicorn
